@@ -5,16 +5,14 @@ import { StatusBar } from 'expo-status-bar';
 import { WishlistProvider } from './src/context/WishlistContext';
 import AppNavigator from './src/Navigation/AppNavigator';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './src/firebase/firebaseConfig';
 
 export default function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log('Auth status:', user ? 'Logged in' : 'Logged out');
+      console.log('Firebase Auth:', user ? 'Logged in' : 'Logged out');
     });
-
     return unsubscribe;
   }, []);
 
